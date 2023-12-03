@@ -173,4 +173,15 @@ Run 'docker COMMAND --help' for more information on a command.
     ============================================ 
 	#docker container rm <container_id> or <Container_name> < > <>...............
 
-19. 
+19. How to delete Multiple-Containers Using For-loop statement :
+    ========================================================== 
+	#for i in 'docker container ps -qa'; do docker container stop $i; docker container rm $i; done
+	#for i in $(docker container ps -qa); do docker container stop $i; docker container rm $i; done 
+
+20. How to Delete Docker Multiple Images at a time :
+    ==============================================
+	#for i in $(docker images -qa); do docker images rm $i; done
+	#docekr images
+	#docker image ls
+
+21. 

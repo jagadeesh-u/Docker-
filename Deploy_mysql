@@ -1,0 +1,44 @@
+1. How to Deploy Mysql Server in Container ?
+   ========================================
+	#docker container run -d --name mysql-server -e MYSQL_ROOT_PASSWORD=********* mysql:latest
+
+2. How to login to the Container ?
+   ============================== 
+	#docker container exec -it mysql-server bash <specify shell>
+
+3. Verifying Env variable after login to the container ?
+   ====================================================
+	#docker container exec -it mysql-server bash
+		#env
+
+4. How to run application in container by port forwarding ?
+   ======================================================
+	#docker container run -d --name nginx-demo --hostname nginx-server -p 8090:80 nginx:latest
+		8090 is Binded with 80 Port number
+
+	Alway host port number will be change 		: 8090, 8091, 8092, 8093
+	Container port number will be remain same 	: 80
+
+5. After Creating a Container Few Things will be Changable or Updatable or Modifiable ?
+   ==================================================================================
+	#docker container update <container_name> --restart always
+	#docker container update <container_name> --restart OnFailure 
+	#docker container update <container_name> --restart No
+	#docker container update <container_id> --restart Unless-Stopped
+
+6. How to Deploy Mysql database and Wordpress Frontend application in container ?
+   ============================================================================  
+	#docker container run -d --name Mysql-database -e MYSQL_ROOT_PASSWORD=test1234 -e MYSQL_DATABASE=WordPress mysql <image>
+
+7. Deploying Wordpress Application in Docker Container ?
+   ====================================================
+	#docker container run -d --name Wordpress-Application -e WORDPRESS_DB_HOST=172.17.0.2 "Give MYSQL Container Ip"
+		-e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=test1234 -e WORDPRESS_DB_NAME=wordpress wordpress
+
+8. Verify wether the Containers are properly running or not ?
+   =========================================================
+	#docker container ps
+	#docker ps
+	#docker container ps -a <it shows stopped and started and Running containers as well>
+
+

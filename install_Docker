@@ -1,48 +1,176 @@
-1. Update && Upgrade pacakges :
-	sudo apt-get update
+1. See Available Images ?
+=========================
 
-2. Installing Docker :
-	#sudo apt-get install ca-certificates curl gnupg
-	#sudo install -m 0755 -d /etc/apt/keyrings
-	#curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-	#sudo chmod a+r /etc/apt/keyrings/docker.gpg
-	
-3. Add Repository to Apt Source :
-	#echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+	#docker images
+	#docker image ls <listing Available docker images>
 
-4. Update Repository :
-	#sudo apt-get update
+2. Download Docker Images ?
+===========================
 
+	Go to Google.com =======> https://hub.docker.com/ =======> select nginx image
 
-5. Install latest Version of Docker CLI :
-	#sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   Download Docker image ?
+   ======================
+	#docker pull nginx
 
+3. Download  docker images though associate or attch specific tag :
+   ===============================================================
 
-6. Verify Docker Engine is Successfully !
-	#sudo docker run hello-world
+	#docker pull nginx:latest <latest is a specific tag>
 
+4. Verify Available images ?		
+   ========================	
+	#docker images
+	#docker image ls
 
-7. Verify Version :
-	#docker --version
+5. which is smallest image om Docker ?
+   ==================================
+	#docker pull alpine <alpine is a Smallest image in Docker hub>
 
-8. Verify Full Description of the Docker Engine :
-	#docker info
+6. How to create a Container Using Docker Container ?
+   =================================================
+	#docker container run -d<detach mode> --name <name of the container> --hostname <hostname of the container> "image_name"
+														    ============
+	Ex: #docker container run -d --name nginx-container --hostname nginx-server nginx:latest
 
+7. How to check wether the container is running or not ?
+   ==================================================
+ 	#docker ps 
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-=======================================================================================================================================================
+8. How to stop container ?
+   =====================
+	#docker container stop <container_name> or <container_id>
 
+9. How to start Container ?
+   =======================
+	#docker container start <container_name> or <container_id>
 
-1. what is Docker ?
-=================== 
-	
-	Docker is a containerization platform which packages your application and all its dependencies
-together in the form of containers so as to ensure that your application works seamlessly in any
-environment, be it development, test or production. Docker containers, wrap a piece of software
-in a complete filesystem that contains everything needed to run: code, runtime, system tools,
-system libraries, etc. It wraps basically anything that can be installed on a server. This guarantees
-that the software will always run the same, regardless of its environment.
+10. How to verify the Ip_Address of the Container ?
+    =============================================
+	#docker container describe <container_name> or <container_Id>
 
+11. How to Access the Application inside the Container ?
+    ==================================================
+	#curl 172.17.0.1
+
+12. How to see all stopped containers ?
+    =================================
+    	#docker container ps -a
+		Status ==> Exit code "0" Means Successfull Otherthan anything is #Failure
+
+	#echo $? "0" Successfull
+
+13. Restart Container ?
+    =================
+	#docker container restart <container_name> or <container_ip> 
+
+14. How to remove the Container ?
+    ============================
+	Instructions to Remove Container :
+		1. First Stop the Container Before removing the Container
+
+	#docker container stop <container_name> or <container_id>
+	#docker container rm <Conatiner_name> or <Container_Id>
+	#docker container rm -f <container_name> or <Container_Id>
+		Note : Dont Remove Container Forcefully at any cost in Officially
+
+15. How to remove the Docker Images ?
+    ================================ 
+	#docker image rm <image_name> or <image_Id>
+	#docker image rm -f <image_name> or <image_Id>
+
+16. How can i see Docker all available commands :
+    ===========================================
+	#docker
+
+OUT_PUT : 
+	Common Commands:
+ 		run         Create and run a new container from an image
+  		exec        Execute a command in a running container
+	 	ps          List containers
+ 	        build       Build an image from a Dockerfile
+  		pull        Download an image from a registry
+  		push        Upload an image to a registry
+  		images      List images
+  		login       Log in to a registry
+  		logout      Log out from a registry
+  		search      Search Docker Hub for images
+  		version     Show the Docker version information
+  		info        Display system-wide information
+
+Management Commands:
+  builder     Manage builds
+  buildx*     Docker Buildx (Docker Inc., v0.11.2)
+  compose*    Docker Compose (Docker Inc., v2.21.0)
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  plugin      Manage plugins
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+				Swarm Commands:
+  				swarm       Manage Swarm
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  import      Import the contents from a tarball to create a filesystem image
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  wait        Block until one or more containers stop, then print their exit codes
+
+Global Options:
+      --config string      Location of client config files (default "/root/.docker")
+  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var and default context set with "docker
+                           context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket to connect to
+  -l, --log-level string   Set the logging level ("debug", "info", "warn", "error", "fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "/root/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "/root/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default "/root/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Run 'docker COMMAND --help' for more information on a command.
+ 
+
+17. How to create a container without first Downloading the images ?
+    ===============================================================
+	#docker container run -d --name nginx-demo --hostname nginx-server nginx ("nginx") image name
+		it will download the image first then automatically it will create a Container
+
+	#Note: You can Create No.of Containers with Same Port Number called Port 80 it is posible with the fuctionality called "Name_Spaces and Cgroups"
+
+18. How to delete Multiple-Containers at a time ?
+    ============================================ 
+	#docker container rm <container_id> or <Container_name> < > <>...............
+
+19. 
