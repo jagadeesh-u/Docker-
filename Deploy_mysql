@@ -33,7 +33,7 @@
 7. Deploying Wordpress Application in Docker Container ?
    ====================================================
 	#docker container run -d --name Wordpress-Application -e WORDPRESS_DB_HOST=172.17.0.2 "Give MYSQL Container Ip"
-		-e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=test1234 -e WORDPRESS_DB_NAME=wordpress wordpress
+		-e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=test1234 -e WORDPRESS_DB_NAME=wordpress -p 8091:80 --restart always wordpress
 
 8. Verify wether the Containers are properly running or not ?
    =========================================================
@@ -41,4 +41,10 @@
 	#docker ps
 	#docker container ps -a <it shows stopped and started and Running containers as well>
 
+9. How to remove all containers ?
+   =============================
+	#for i in $(docker container ps); do docker container stop $i; docker container rm $i; done
 
+	Successfully Completed the Containers
+
+10. 
