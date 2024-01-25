@@ -40,3 +40,7 @@ networks:
       config:
         - subnet: 10.20.0.0/16
 
+
+        #Deploying mysql_wordpress on webserver through docker-compose.yaml file 
+        Successfully Deployed
+
